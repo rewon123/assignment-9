@@ -1,0 +1,38 @@
+.center-alignment {
+    margin: 0% 25%;
+    margin-top: 7.5%;
+    width: 570px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ABABAB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.input-field {
+    border: none;
+    border-bottom: 0.10px solid #C5C5C5;
+    width: 462px;
+    height: 42px;
+}
+
+.social-signIn {
+    width: 461px;
+    height: 51px;
+    border: 1px solid #C7C7C7;
+    box-sizing: border-box;
+    border-radius: 57px;
+    margin: 0px 28.5%;
+    margin-top: 15px;
+}
+
+.signUp-btn {
+    border: none;
+    background: #F9A51A;
+    width: 462px;
+    height: 50px;
+    padding: 14px 165px;
+    margin-top: 30px;
+}

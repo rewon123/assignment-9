@@ -1,0 +1,15 @@
+.half {
+    margin-top: 180px;
+    float: left;
+}
+.img{
+    border-radius: 15px;
+    margin: 0px 25px;
+    width: 180px;
+    height: 316px;
+    float: left;
+}
+.img:hover{
+    border: 2px solid #F9A51A;
+    border-radius: 15px;
+}
