@@ -41,10 +41,10 @@ function App() {
             <Header loggedInUser={loggedInUser} page_name={"signup"}></Header>
             <SignUp></SignUp>
           </Route>
-          <Route path='/rooms'>
+          <PrivateRoute path='/rooms'>
             <Header loggedInUser={loggedInUser} page_name={"rooms"}></Header>
             <Rooms></Rooms>
-          </Route>
+          </PrivateRoute>
           <Route path="*">
           <NotFound></NotFound>
           </Route>

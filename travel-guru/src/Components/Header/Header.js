@@ -32,7 +32,7 @@ const Header = (props) => {
                         (props.page_name === 'signup') ? <img src={blackImage} /> : ""
                     }
                     {
-                        (props.page_name === 'rooms') ? <img src={blackImage} /> : <Whiteimage />
+                        (props.page_name === 'rooms') ? <img src={blackImage} /> : ""
                     }
                 </Link>
                 <ul className="navbar-nav align-items-center">
