@@ -9,7 +9,6 @@ const Home = () => {
     const [it, setIt] = useState([])
     const handle = (travelItem) => {
         setIt(travelItem);
-        // console.log('click korsos ken?');
     }
     return (
         <div className='container'>
@@ -20,7 +19,7 @@ const Home = () => {
             </div>
             <div className="col-md-8 half">
                 {
-                    placeDetail.map(place => <img onClick={() => handle(place)} onLoad={() => handle(place)} className='img' src={place.img} alt="" />)
+                    placeDetail.map(place => <img onClick={() => handle(place)} onLoad={() => handle(place)} className='img' key={place.id} src={place.img} alt="" ></img>)
                 }
             </div>
         </div>

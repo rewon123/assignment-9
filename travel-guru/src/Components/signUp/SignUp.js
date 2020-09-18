@@ -86,7 +86,7 @@ const SignUp = () => {
     }
     return (
         <div>
-            <Header name={loggedInUser}></Header>
+            <Header loggedInUser={loggedInUser}></Header>
             <div className='center-alignment'>
 
                 {newUser ? <label style={{ fontSize: '30px' }}>Create an account</label> : <label style={{ fontSize: '30px' }}>log in with your email & password</label>}

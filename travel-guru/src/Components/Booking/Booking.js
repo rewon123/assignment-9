@@ -21,7 +21,6 @@ const Booking = () => {
     const { id } = useParams();
     const data = fakeData;
     data.find(place => place.id === id)
-    console.log(data[id].id)
     return (
         <div className='container'>
             <div className="col-md-6 booking" id="first-half" style={{ fontFamily: 'Montserrat' }} >
@@ -31,7 +30,7 @@ const Booking = () => {
             <div className="col-md-6 booking" style={{ color: 'black' }} id="second-half">
                 <label htmlFor="" className="label">Origin</label>
                 <input type="text" className="form-input" defaultValue="Dhaka" />
-                <label htmlFor="" className='label'  >Destination</label>
+                <label htmlFor="" className='label' >Destination</label>
                 <input type="text" className="form-input" value={data[id].name} />
 
                 <div className="d-flex">

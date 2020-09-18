@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // ---------------------------------------------------------------
 // this component was made because of our provided image was black and it was looking very bad looking and in our figma file the log was white so i copied the svg
-// -ignore this component it  just used for the logo :)
+// -ignore this component it  just used for the logo 😅
 
 import React from 'react';
 

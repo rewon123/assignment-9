@@ -11,43 +11,41 @@ import SignUp from './Components/signUp/SignUp';
 import Booking from './Components/Booking/Booking';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Rooms from './Components/Rooms/Rooms';
+import NotFound from './Components/NotFound/NotFound';
 
 
 export const UserContext = createContext();
 
 function App() {
-
   const [loggedInUser, setLoggedInUser] = useState({});
-  console.log(loggedInUser);
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
-            <Route exact path="/">
-              <div>
-                <img className="bg" src={bg} alt="" />
-              </div>
-              <Header name={loggedInUser} ></Header>
-              <Home></Home>
-            </Route>
+          <Route exact path="/">
+            <div>
+              <img className="bg" src={bg} alt="" />
+            </div>
+            <Header loggedInUser={loggedInUser}></Header>
+            <Home></Home>
+          </Route>
           <Route path="/booking/:id">
             <div>
               <img className="bg" src={bg} alt="" />
             </div>
-            <Header name={loggedInUser}></Header>
+            <Header loggedInUser={loggedInUser}></Header>
             <Booking></Booking>
           </Route>
           <Route path="/login">
             <SignUp></SignUp>
           </Route>
-          <Route path='/rooms'>
-            <Header name={loggedInUser}></Header>
+          <PrivateRoute path='/rooms'>
+            <Header loggedInUser={loggedInUser}></Header>
             <Rooms></Rooms>
-          </Route>
+          </PrivateRoute>
           <Route path="*">
-            <h1>this i page is not ready yet</h1>
-            <h1>404</h1>
+          <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
