@@ -4,6 +4,10 @@
 .nav{
     padding: 0px 20px;
 }
+.fixed-top {
+    padding-top: 50px;
+    border-bottom: 1px solid #D1D1D1;
+}
 .search{
     margin-right: 100px;
     border: 2px solid white;
@@ -15,4 +19,13 @@
 }
 .btn{
    background-color: #F9A51A
+}
+
+
+.menu_text_color_white{
+    color: white;
+}
+
+.menu_text_color_black{
+    color: black;
 }

@@ -3,7 +3,6 @@ import './SignUp.css'
 import { handleGoogleSignIn, handleSignOut, handleFbSignIn, initializeLoginFramework, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './LogInManager';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import Header from '../Header/Header';
 import fb from '../../travel-guru/Icon/fb.png'
 import google from '../../travel-guru/Icon/google.png'
 
@@ -19,6 +18,11 @@ const SignUp = () => {
         photo: ''
     });
     initializeLoginFramework();
+
+
+    const [pass, setPass] = useState();
+    const [confPass, setConfPass] = useState();
+
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
@@ -48,19 +52,33 @@ const SignUp = () => {
         setLoggedInUser(res);
         history.replace(from);
         if (redirect) {
+            history.push('/rooms')
 
         }
     }
-
     const handleBlur = (e) => {
         let isFieldValid = true;
         if (e.target.name === 'email') {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+            if (!isFieldValid) {
+                alert("Please enter correct email address!!!!");
+            }
         }
         if (e.target.name === 'password') {
+            setPass(e.target.value);
             const isPasswordValid = e.target.value.length > 6;
-            const passwordHasNumber = /\d{1}/.test(e.target.value);
-            isFieldValid = isPasswordValid && passwordHasNumber;
+            isFieldValid = isPasswordValid;
+            if (newUser) {
+                if (!isPasswordValid) {
+                    alert("Please enter minimum 6 character !!");
+                }
+            }
+
+        }
+        if (newUser) {
+            if (e.target.name === 'confirmPassword') {
+                setConfPass(e.target.value);
+            }
         }
         if (isFieldValid) {
             const newUserInfo = { ...user };
@@ -69,24 +87,40 @@ const SignUp = () => {
         }
     }
     const handleSubmit = (e) => {
-        if (newUser && user.email && user.password) {
-            createUserWithEmailAndPassword(user.name, user.email, user.password)
-                .then(res => {
-                    handleResponse(res, true)
 
-                })
+        let pass_valid = false;
+        if (newUser) {
+            if (pass === confPass) {
+                pass_valid = true;
+            }
+        } else {
+            pass_valid = true;
         }
-        if (!newUser && user.email && user.password) {
-            signInWithEmailAndPassword(user.email, user.password)
-                .then(res => {
-                    handleResponse(res, true)
-                })
+
+        if (pass_valid) {
+            if (newUser && user.email && user.password) {
+                createUserWithEmailAndPassword(user.name, user.email, user.password)
+                    .then(res => {
+                        handleResponse(res, true)
+
+                    })
+            }
+            if (!newUser && user.email && user.password) {
+                signInWithEmailAndPassword(user.email, user.password)
+                    .then(res => {
+                        handleResponse(res, true)
+                    })
+            }
+            e.preventDefault();
+        } else {
+            alert("Please password not match");
+            e.preventDefault();
         }
-        e.preventDefault();
+
+
     }
     return (
         <div>
-            <Header loggedInUser={loggedInUser}></Header>
             <div className='center-alignment'>
 
                 {newUser ? <label style={{ fontSize: '30px' }}>Create an account</label> : <label style={{ fontSize: '30px' }}>log in with your email & password</label>}
@@ -97,7 +131,7 @@ const SignUp = () => {
                     <br />
                     <input type="password" name="password" className="input-field" onBlur={handleBlur} placeholder="Your Password" required />
                     <br />
-                    {newUser && <input name="confirmPassword" type="text" className="input-field" onBlur={handleBlur} placeholder="confirm Your Password" required />}
+                    {newUser && <input name="confirmPassword" type="password" className="input-field" onBlur={handleBlur} placeholder="confirm Your Password" required />}
                     <br />
                     <input className="signUp-btn" type="submit" value={newUser ? 'Sign up' : 'Sign in'} />
                 </form>

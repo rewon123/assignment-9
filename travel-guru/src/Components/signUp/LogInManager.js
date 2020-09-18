@@ -1,6 +1,5 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { useEffect } from "react";
 import firebaseConfig from "../firebase.config";
 
 

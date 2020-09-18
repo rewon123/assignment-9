@@ -36,12 +36,12 @@ const Booking = () => {
                 <div className="d-flex">
                     <div>
                         <label className='label'>Form</label> <br />
-                        <input type="date"defaultValue="2017-05-24" className="form-input-date" />
+                        <input type="date" defaultValue="2017-05-24" className="form-input-date" />
                     </div>
                     <div className="spacing"></div>
                     <div>
                         <label className='label'>To</label><br />
-                        <input type="date"defaultValue="2017-05-24" className="form-input-date" />
+                        <input type="date" defaultValue="2017-05-24" className="form-input-date" />
                     </div>
                 </div>
                 <Link to="/rooms"><button className="booking-btn">Start booking</button></Link>

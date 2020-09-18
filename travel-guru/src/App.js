@@ -27,23 +27,24 @@ function App() {
             <div>
               <img className="bg" src={bg} alt="" />
             </div>
-            <Header loggedInUser={loggedInUser}></Header>
+            <Header loggedInUser={loggedInUser} page_name={"home"}></Header>
             <Home></Home>
           </Route>
           <Route path="/booking/:id">
             <div>
               <img className="bg" src={bg} alt="" />
             </div>
-            <Header loggedInUser={loggedInUser}></Header>
+            <Header loggedInUser={loggedInUser} page_name={"booking"}></Header>
             <Booking></Booking>
           </Route>
           <Route path="/login">
+            <Header loggedInUser={loggedInUser} page_name={"signup"}></Header>
             <SignUp></SignUp>
           </Route>
-          <PrivateRoute path='/rooms'>
-            <Header loggedInUser={loggedInUser}></Header>
+          <Route path='/rooms'>
+            <Header loggedInUser={loggedInUser} page_name={"rooms"}></Header>
             <Rooms></Rooms>
-          </PrivateRoute>
+          </Route>
           <Route path="*">
           <NotFound></NotFound>
           </Route>
